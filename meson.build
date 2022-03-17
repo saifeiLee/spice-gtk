@@ -1,7 +1,7 @@
 #
 # project definition
 #
-project('spice-gtk', 'c',
+project('spice-gtk', 'c', 'cpp',
          version : run_command('build-aux/git-version-gen', '@0@/.tarball-version'.format(meson.source_root()), check : true).stdout().strip(),
          license : 'LGPLv2.1',
          meson_version : '>= 0.53',
@@ -108,7 +108,7 @@ endforeach
 
 # mandatory dependencies, without specific version requirement
 # TODO: specify minimum version for cairo, jpeg and zlib?
-deps = ['cairo', 'libjpeg', 'zlib', 'json-glib-1.0']
+deps = ['cairo', 'libjpeg', 'zlib', 'json-glib-1.0', 'libjxl', 'libjxl_threads']
 if host_machine.system() == 'windows'
   deps += 'gio-windows-2.0'
 else
